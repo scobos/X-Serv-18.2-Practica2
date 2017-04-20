@@ -13,16 +13,15 @@ def acortar(request):
             for i in list_urls:
                 resp += str(i.id) + " que proviene de: " + i.url_larga + "<br/>"
         else:
-            resp = "No hay ninguna url acortada"
+            resp = "No hay ninguna url acortada. "
 
-        resp += "Introduce la url que desee acortar" \
+        resp += "Introduce la url que desee acortar:" \
                 "<form method='POST' action>" \
                 "URL: <input type='text' name='url_larga'><br>" \
                 "<input type='submit' value='Enviar'></form>"
         return HttpResponse(resp)
 
     elif request.method == "POST":
-        #url = urllib.parse.unquote(request.POST['url_larga'])
         acortada = False
         url = request.POST['url_larga']
         if url.startswith('http://') or url.startswith('https://'):
